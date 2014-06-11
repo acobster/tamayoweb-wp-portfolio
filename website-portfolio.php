@@ -17,4 +17,21 @@ require TP_PLUGIN_DIR . 'Website.php';
 // Declare custom post type Website
 Website::init();
 
+add_shortcode( 'websites', 'display_websites');
+
+
+
+/**
+ * Note: expects the website loop template to be in loop-websites.php
+ * @return string the contents of the [websites] shortcode
+ */
+function display_websites() {
+  ob_start();
+  get_template_part( 'loop', 'websites' );
+  $contents = ob_get_contents();
+  ob_end_clean();
+
+  return $contents;
+}
+
 ?>
