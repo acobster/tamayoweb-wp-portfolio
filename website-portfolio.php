@@ -19,6 +19,8 @@ Website::init();
 
 add_shortcode( 'websites', 'display_websites');
 
+add_action( 'attachments_register', 'register_website_attachments' );
+
 
 
 /**
@@ -32,6 +34,18 @@ function display_websites() {
   ob_end_clean();
 
   return $contents;
+}
+
+/**
+ * Register Websites with the Attachments plugin
+ */
+function register_website_attachments( $attachments ) {
+  $args = array(
+    'label' => 'Images',
+    'post_type' => 'website',
+  );
+
+  $attachments->register( 'website_attachments', $args );
 }
 
 ?>
