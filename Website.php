@@ -10,4 +10,21 @@ class Website extends CustomPostType {
     'public'      => true,
     'supports'    => array( 'title', 'editor', 'thumbnail', 'excerpt', ),
   );
+
+  protected static $meta = array(
+    'Info' => array(
+      'title' => 'Website info',
+      'context' => 'side',
+      'fields' => array(
+        'url' => array(
+          'label' => 'Website URL:',
+        ),
+        'roles' => array(
+          'noLabel' => true,
+          'before' => '<hr/><h4>Roles:</h4>',
+          'type' => 'textarea',
+        ),
+      ),
+    ),
+  );
 }
