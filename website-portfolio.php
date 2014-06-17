@@ -18,6 +18,7 @@ require TP_PLUGIN_DIR . 'Website.php';
 Website::init();
 
 add_shortcode( 'websites', 'display_websites');
+add_shortcode( 'designs', 'display_designs');
 
 add_action( 'attachments_register', 'register_website_attachments' );
 
@@ -30,6 +31,18 @@ add_action( 'attachments_register', 'register_website_attachments' );
 function display_websites() {
   ob_start();
   get_template_part( 'loop', 'websites' );
+  $contents = ob_get_contents();
+  ob_end_clean();
+
+  return $contents;
+}
+
+/**
+ * Execute the "designs" shortcode
+ */
+function display_designs() {
+  ob_start();
+  get_template_part( 'loop', 'designs' );
   $contents = ob_get_contents();
   ob_end_clean();
 
